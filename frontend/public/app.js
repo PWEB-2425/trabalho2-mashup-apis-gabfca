@@ -1,6 +1,6 @@
 import { api } from './api.js';
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'http://https://trabalho2-mashup-apis-gabfca-backend.onrender.com/api';
 
 // DOM Elements
 export const elements = {
