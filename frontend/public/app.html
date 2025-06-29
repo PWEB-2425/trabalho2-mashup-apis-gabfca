@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,89 +6,39 @@
   <title>VibeClip Feed & Mixer</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1fr 5fr 1fr;
-      gap: 3rem;
-      padding: 1rem;
-    }
-
-    .highlight-box {
-      background-color: #1e1e2f;
-      border: 2px solid #ffffff;
-      border-radius: 0.75rem;
-      padding: 1rem;
-    }
-  </style>
 </head>
 <body>
   <header class="main-grid">
-    <h1 style="grid-column: span 3;">VibeClip</h1>
+    <h1>VibeClip</h1>
   </header>
 
-  <div class="main-grid">
-
-    <!-- Feed section -->
-    <section class="media-box" aria-label="VibeClip Feed">
-
-      <div class="profile-tabs" role="tablist">
-        <button class="tab-btn active" data-tab="public-mixes" role="tab" aria-selected="true" aria-controls="public-mixes">All VibeClips</button>
-        <button class="tab-btn" data-tab="my-mixes" role="tab" aria-selected="false" aria-controls="my-mixes">Your VibeClips</button>
-        <button id="logoutBtn">Log out</button>
-      
+  <div class="main-grid" style="gap: 1rem;">
+   <!-- Feed section -->
+  <section class="media-box" aria-label="VibeClip Feed" style="flex:3;">
+    <div class="profile-tabs" role="tablist">
+      <button class="tab-btn active" data-tab="public-mixes" role="tab" aria-selected="true" aria-controls="public-mixes">All VibeClips</button>
+      <button class="tab-btn" data-tab="my-mixes" role="tab" aria-selected="false" aria-controls="my-mixes">Your VibeClips</button>
+    </div>
+    
+    <!-- Header for the feed, outside tab-content -->
+    <h2 id="feedHeading">All VibeClips</h2>
+    
+    <div id="public-mixes" class="tab-content active" role="tabpanel" aria-labelledby="feedHeading">
+      <div id="publicMixesList" class="mixes-list">
+        <!-- Each public mix item here acts like a feed post -->
       </div>
-
-      <h2 id="feedHeading">All VibeClips</h2>
-
-      <div id="public-mixes" class="tab-content active" role="tabpanel" aria-labelledby="feedHeading">
-        <div id="publicMixesList" class="mixes-list">
-          <!-- Each public mix item here acts like a feed post -->
-        </div>
+    </div>
+    
+    <div id="my-mixes" class="tab-content" role="tabpanel" hidden>
+      <h2>Your Saved Mixes</h2>
+      <div id="myMixesList" class="mixes-list">
+        <!-- User mixes loaded here -->
       </div>
-
-      <div id="my-mixes" class="tab-content" role="tabpanel" hidden>
-        <h2>by: You</h2>
-        <div id="myMixesList" class="mixes-list">
-          <!-- User mixes loaded here -->
-        </div>
-      </div>
-
-
-
-
-    </section>
-
-    <!-- Mix Viewer section (center) -->
-    <section id="mixViewer" class="media-box highlight-box" aria-label="VibeClip Mix Viewer">
-      <div id="mixedTrailerContainer" class="results-section">
-        <div class="results-header">
-          <h3>Your VibeClip Mix</h3>
-          <div class="action-row" style="display: flex; justify-content: center;">
-            <button id="downloadMixedBtn" type="button" disabled>Download</button>
-            <button id="closeProfileBtn" type="button" disabled style="display: none;">Close</button>
-          </div>
-        </div>
-        <div id="mixedPlayer" class="mixed-player">
-          <div class="mixed-placeholder">
-            <div class="placeholder-content">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M10 8l6 4-6 4V8z"></path>
-              </svg>
-              <h4>Your mix will appear here</h4>
-              <p>Select a trailer and song to create your VibeClip</p>
-            </div>
-          </div>
-        </div>
-        <div class="share-options" style="width: 25%; height: 110%; margin: auto;">
-          <button id="saveCurrentMixBtn" class="save-mix-btn">Post VibeClip!</button>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
     <!-- Mixer section -->
-    <section class="media-box" aria-label="VibeClip Mixer Tool">
+    <section class="media-box" aria-label="VibeClip Mixer Tool" style="flex:2;">
       <header>
         <h2>VibeClip Mixer</h2>
       </header>
@@ -96,7 +46,13 @@
       <div class="media-box" aria-label="Movie trailer search">
         <h3>Movie Trailer</h3>
         <div class="search-row">
-          <input type="search" id="movieName" placeholder="Search movies..." autocomplete="off" spellcheck="false" />
+          <input
+            type="search"
+            id="movieName"
+            placeholder="Search movies..."
+            autocomplete="off"
+            spellcheck="false"
+          />
           <button id="searchTrailerBtn" type="button">Search</button>
         </div>
         <div id="trailer" class="media-preview">
@@ -113,7 +69,13 @@
       <div class="media-box" aria-label="Song preview search">
         <h3>Music Track</h3>
         <div class="search-row">
-          <input type="search" id="songName" placeholder="Search songs..." autocomplete="off" spellcheck="false" />
+          <input
+            type="search"
+            id="songName"
+            placeholder="Search songs..."
+            autocomplete="off"
+            spellcheck="false"
+          />
           <button id="searchSongBtn" type="button">Search</button>
         </div>
         <div id="songPreview" class="media-preview">
@@ -170,20 +132,43 @@
           </div>
         </div>
       </div>
-
       <div style="display: none;">
         <button id="profileBtn" type="button">Login</button>
         <button id="closeProfileBtn" type="button">Login</button>
       </div>
+      <button id="logoutBtn">Log out</button>
 
-      <button id="playMixedBtn" type="button" disabled>GENERATE MIX!</button>
-
+      <div id="mixedTrailerContainer" class="results-section">
+        <div class="results-header">
+          <h3>Your VibeClip Mix</h3>
+          <div class="action-row" style="display: flex; justify-content: center;">
+            <button id="playMixedBtn" type="button" disabled>GENERATE MIX!</button>
+            <button id="downloadMixedBtn" type="button" disabled>Download</button>
+            <button id="closeProfileBtn" type="button" disabled style="display: none;">Close</button>
+          </div>
+        </div>
+        <div id="mixedPlayer" class="mixed-player">
+          <div class="mixed-placeholder">
+            <div class="placeholder-content">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M10 8l6 4-6 4V8z"></path>
+              </svg>
+              <h4>Your mix will appear here</h4>
+              <p>Select a trailer and song to create your VibeClip</p>
+            </div>
+          </div>
+        </div>
+        <div class="share-options" style="width: 25%; height: 110%; margin: auto;">
+          <button id="saveCurrentMixBtn" class="save-mix-btn">Post VibeClip!</button>
+        </div>
+      </div>
     </section>
   </div>
 
   <script type="module" src="app.js"></script>
   <script>
-    // Tab switching logic
+    // Tab switching logic remains unchanged
     document.querySelectorAll('.profile-tabs button').forEach((btn) => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.profile-tabs button').forEach(b => {
@@ -208,3 +193,4 @@
   </script>
 </body>
 </html>
+
