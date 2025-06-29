@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,76 +6,329 @@
   <title>VibeClip Feed & Mixer</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 5fr 1fr;
+      gap: 3rem;
+      padding: 1rem;
+    }
+
+    .highlight-box {
+      background-color: #1e1e2f;
+      border: 2px solid #ffffff;
+      border-radius: 0.75rem;
+      padding: 1rem;
+    }
+  </style>
 </head>
 <body>
   <header class="main-grid">
-    <h1>VibeClip</h1>
+    <h1 style="grid-column: span 3;">VibeClip</h1>
   </header>
 
-  <div class="main-grid" style="gap: 1rem;">
-   <!-- Feed section -->
-  <section class="media-box" aria-label="VibeClip Feed" style="flex:3;">
-    <div class="profile-tabs" role="tablist">
-      <button class="tab-btn active" data-tab="public-mixes" role="tab" aria-selected="true" aria-controls="public-mixes">All VibeClips</button>
-      <button class="tab-btn" data-tab="my-mixes" role="tab" aria-selected="false" aria-controls="my-mixes">Your VibeClips</button>
-    </div>
-    
-    <!-- Header for the feed, outside tab-content -->
-    <h2 id="feedHeading">All VibeClips</h2>
-    
-    <div id="public-mixes" class="tab-content active" role="tabpanel" aria-labelledby="feedHeading">
-      <div id="publicMixesList" class="mixes-list">
-        <!-- Each public mix item here acts like a feed post -->
+  <div class="main-grid">
+
+    <!-- Feed section -->
+    <section class="media-box" aria-label="VibeClip Feed">
+
+      <div class="profile-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="public-mixes" role="tab" aria-selected="true" aria-controls="public-mixes">All VibeClips</button>
+        <button class="tab-btn" data-tab="my-mixes" role="tab" aria-selected="false" aria-controls="my-mixes">Your VibeClips</button>
+        <button id="logoutBtn">Log out</button>
+      
       </div>
-    </div>
-    
-    <div id="my-mixes" class="tab-content" role="tabpanel" hidden>
-      <h2>Your Saved Mixes</h2>
-      <div id="myMixesList" class="mixes-list">
-        <!-- User mixes loaded here -->
+
+      <h2 id="feedHeading">All VibeClips</h2>
+
+      <div id="public-mixes" class="tab-content active" role="tabpanel" aria-labelledby="feedHeading">
+        <div id="publicMixesList" class="mixes-list">
+          <!-- Each public mix item here acts like a feed post -->
+        </div>
       </div>
-    </div>
-  </section>
+
+      <div id="my-mixes" class="tab-content" role="tabpanel" hidden>
+        <h2>by: You</h2>
+        <div id="myMixesList" class="mixes-list">
+          <!-- User mixes loaded here -->
+        </div>
+      </div>
+
+
+
+
+    </section>
+
+    <!-- Mix Viewer section (center) -->
+    <section id="mixViewer" class="media-box highlight-box" aria-label="VibeClip Mix Viewer">
+      <div id="mixedTrailerContainer" class="results-section">
+        <div class="results-header">
+          <h3>Your VibeClip Mix</h3>
+          <div class="action-row" style="display: flex; justify-content: center;">
+            <button id="downloadMixedBtn" type="button" disabled>Download</button>
+            <button id="closeProfileBtn" type="button" disabled style="display: none;">Close</button>
+          </div>
+        </div>
+        <div id="mixedPlayer" class="mixed-player">
+          <div class="mixed-placeholder">
+            <div class="placeholder-content">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M10 8l6 4-6 4V8z"></path>
+              </svg>
+              <h4>Your mix will appear here</h4>
+              <p>Select a trailer and song to create your VibeClip</p>
+            </div>
+          </div>
+        </div>
+        <div class="share-options" style="width: 25%; height: 110%; margin: auto;">
+          <button id="saveCurrentMixBtn" class="save-mix-btn">Post VibeClip!</button>
+        </div>
+      </div>
+    </section>
 
     <!-- Mixer section -->
-    <section class="media-box" aria-label="VibeClip Mixer Tool" style="flex:2;">
+    <section class="media-box" aria-label="VibeClip Mixer Tool">
       <header>
         <h2>VibeClip Mixer</h2>
       </header>
 
-      <div class="media-box" aria-label="Movie trailer search">
-        <h3>Movie Trailer</h3>
-        <div class="search-row">
-          <input
-            type="search"
-            id="movieName"
-            placeholder="Search movies..."
-            autocomplete="off"
-            spellcheck="false"
-          />
-          <button id="searchTrailerBtn" type="button">Search</button>
-        </div>
-        <div id="trailer" class="media-preview">
-          <div class="media-preview-placeholder">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M23 7l-7 5 7 5V7z"></path>
-              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-            </svg>
-            <p>No trailer selected</p>
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>VibeClip Feed & Mixer</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" />
+        <link rel="stylesheet" href="styles.css" />
+      </head>
+      <body>
+        <header class="main-grid">
+          <h1>VibeClip</h1>
+        </header>
+      
+        <div class="main-grid" style="gap: 1rem;">
+         <!-- Feed section -->
+        <section class="media-box" aria-label="VibeClip Feed" style="flex:3;">
+          <div class="profile-tabs" role="tablist">
+            <button class="tab-btn active" data-tab="public-mixes" role="tab" aria-selected="true" aria-controls="public-mixes">All VibeClips</button>
+            <button class="tab-btn" data-tab="my-mixes" role="tab" aria-selected="false" aria-controls="my-mixes">Your VibeClips</button>
           </div>
+          
+          <!-- Header for the feed, outside tab-content -->
+          <h2 id="feedHeading">All VibeClips</h2>
+          
+          <div id="public-mixes" class="tab-content active" role="tabpanel" aria-labelledby="feedHeading">
+            <div id="publicMixesList" class="mixes-list">
+              <!-- Each public mix item here acts like a feed post -->
+            </div>
+          </div>
+          
+          <div id="my-mixes" class="tab-content" role="tabpanel" hidden>
+            <h2>Your Saved Mixes</h2>
+            <div id="myMixesList" class="mixes-list">
+              <!-- User mixes loaded here -->
+            </div>
+          </div>
+        </section>
+      
+          <!-- Mixer section -->
+          <section class="media-box" aria-label="VibeClip Mixer Tool" style="flex:2;">
+            <header>
+              <h2>VibeClip Mixer</h2>
+            </header>
+      
+            <div class="media-box" aria-label="Movie trailer search" style="font-family: Arial, sans-serif;">
+              <h3>Movie Trailer</h3>
+              <div class="search-row" style="margin-bottom: 10px;">
+                <input
+                  type="search"
+                  id="movieName"
+                  placeholder="Search movies..."
+                  autocomplete="off"
+                  spellcheck="false"
+                  style="padding: 6px; font-size: 14px; width: 200px;"
+                />
+                <button
+                  id="searchTrailerBtn"
+                  type="button"
+                  style="padding: 6px 12px; font-size: 14px; cursor: pointer;"
+                >
+                  Search
+                </button>
+              </div>
+              <div
+                id="trailer"
+                class="media-preview"
+                style="max-width: 150px; width: 100%; margin: 0 auto;"
+              >
+                <div
+                  class="media-preview-placeholder"
+                  style="text-align: center; color: #666; font-size: 14px;"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    style="vertical-align: middle;"
+                  >
+                    <path d="M23 7l-7 5 7 5V7z"></path>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                  <p style="margin: 4px 0 0;">No trailer selected</p>
+                </div>
+              </div>
+              <style>
+                #trailer iframe {
+                  max-width: 150px;
+                  width: 100%;
+                  height: auto;
+                  aspect-ratio: 16 / 9;
+                  border: none;
+                  display: block;
+                  margin: 0 auto;
+                }
+              </style>
+            </div>
+      
+            <div class="media-box" aria-label="Song preview search">
+              <h3>Music Track</h3>
+              <div class="search-row">
+                <input
+                  type="search"
+                  id="songName"
+                  placeholder="Search songs..."
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+                <button id="searchSongBtn" type="button">Search</button>
+              </div>
+              <div id="songPreview" class="media-preview">
+                <div class="media-preview-placeholder">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 3v18"></path>
+                    <path d="M19 7v10"></path>
+                    <path d="M5 15v-4"></path>
+                    <path d="M5 11v4"></path>
+                  </svg>
+                  <p>No song selected</p>
+                </div>
+              </div>
+            </div>
+      
+            <div id="segmentSelector" class="segment-controls">
+              <div class="segment-grid">
+                <div class="segment-box">
+                  <h4>Video Segment</h4>
+                  <div class="timeline-container">
+                    <div class="timeline-visual">
+                      <div class="timeline-range" id="videoTimelineRange"></div>
+                    </div>
+                  </div>
+                  <div class="slider-container">
+                    <label for="startTimeSlider">Start:</label>
+                    <input type="range" id="startTimeSlider" min="0" max="120" step="0.1" value="0" />
+                    <span id="startTimeLabel">0.0s</span>
+                  </div>
+                  <div class="slider-container">
+                    <label for="endTimeSlider">End:</label>
+                    <input type="range" id="endTimeSlider" min="0" max="120" step="0.1" value="120" />
+                    <span id="endTimeLabel">120.0s</span>
+                  </div>
+                </div>
+      
+                <div class="segment-box">
+                  <h4>Audio Segment</h4>
+                  <div class="timeline-container">
+                    <div class="timeline-visual">
+                      <div class="timeline-range" id="audioTimelineRange"></div>
+                    </div>
+                  </div>
+                  <div class="slider-container">
+                    <label for="audioStartSlider">Start:</label>
+                    <input type="range" id="audioStartSlider" min="0" max="120" step="0.1" value="0" />
+                    <span id="audioStartLabel">0.0s</span>
+                  </div>
+                  <div class="slider-container">
+                    <label for="audioEndSlider">End:</label>
+                    <input type="range" id="audioEndSlider" min="0" max="120" step="0.1" value="120" />
+                    <span id="audioEndLabel">120.0s</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="display: none;">
+              <button id="profileBtn" type="button">Login</button>
+              <button id="closeProfileBtn" type="button">Login</button>
+            </div>
+            <button id="logoutBtn">Log out</button>
+      
+            <div id="mixedTrailerContainer" class="results-section">
+              <div class="results-header">
+                <h3>Your VibeClip Mix</h3>
+                <div class="action-row" style="display: flex; justify-content: center;">
+                  <button id="playMixedBtn" type="button" disabled>GENERATE MIX!</button>
+                  <button id="downloadMixedBtn" type="button" disabled>Download</button>
+                  <button id="closeProfileBtn" type="button" disabled style="display: none;">Close</button>
+                </div>
+              </div>
+      
+              <div id="mixedPlayer" class="mixed-player">
+                <div class="mixed-placeholder">
+                  <div class="placeholder-content">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M10 8l6 4-6 4V8z"></path>
+                    </svg>
+                    <h4>Your mix will appear here</h4>
+                    <p>Select a trailer and song to create your VibeClip</p>
+                  </div>
+                </div>
+              </div>
+              <div class="share-options" style="width: 25%; height: 110%; margin: auto;">
+                <button id="saveCurrentMixBtn" class="save-mix-btn">Post VibeClip!</button>
+              </div>
+            </div>
+          </section>
         </div>
-      </div>
+      
+        <script type="module" src="app.js"></script>
+        <script>
+          // Tab switching logic remains unchanged
+          document.querySelectorAll('.profile-tabs button').forEach((btn) => {
+            btn.addEventListener('click', () => {
+              document.querySelectorAll('.profile-tabs button').forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+              });
+              btn.classList.add('active');
+              btn.setAttribute('aria-selected', 'true');
+      
+              const tab = btn.getAttribute('data-tab');
+              document.querySelectorAll('.tab-content').forEach(tc => {
+                if(tc.id === tab) {
+                  tc.classList.add('active');
+                  tc.removeAttribute('hidden');
+                } else {
+                  tc.classList.remove('active');
+                  tc.setAttribute('hidden', '');
+                }
+              });
+            });
+          });
+        </script>
+      </body>
+      </html>
+      
+      
 
       <div class="media-box" aria-label="Song preview search">
         <h3>Music Track</h3>
         <div class="search-row">
-          <input
-            type="search"
-            id="songName"
-            placeholder="Search songs..."
-            autocomplete="off"
-            spellcheck="false"
-          />
+          <input type="search" id="songName" placeholder="Search songs..." autocomplete="off" spellcheck="false" />
           <button id="searchSongBtn" type="button">Search</button>
         </div>
         <div id="songPreview" class="media-preview">
@@ -132,43 +385,20 @@
           </div>
         </div>
       </div>
+
       <div style="display: none;">
         <button id="profileBtn" type="button">Login</button>
         <button id="closeProfileBtn" type="button">Login</button>
       </div>
-      <button id="logoutBtn">Log out</button>
 
-      <div id="mixedTrailerContainer" class="results-section">
-        <div class="results-header">
-          <h3>Your VibeClip Mix</h3>
-          <div class="action-row" style="display: flex; justify-content: center;">
-            <button id="playMixedBtn" type="button" disabled>GENERATE MIX!</button>
-            <button id="downloadMixedBtn" type="button" disabled>Download</button>
-            <button id="closeProfileBtn" type="button" disabled style="display: none;">Close</button>
-          </div>
-        </div>
-        <div id="mixedPlayer" class="mixed-player">
-          <div class="mixed-placeholder">
-            <div class="placeholder-content">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M10 8l6 4-6 4V8z"></path>
-              </svg>
-              <h4>Your mix will appear here</h4>
-              <p>Select a trailer and song to create your VibeClip</p>
-            </div>
-          </div>
-        </div>
-        <div class="share-options" style="width: 25%; height: 110%; margin: auto;">
-          <button id="saveCurrentMixBtn" class="save-mix-btn">Post VibeClip!</button>
-        </div>
-      </div>
+      <button id="playMixedBtn" type="button" disabled>GENERATE MIX!</button>
+
     </section>
   </div>
 
   <script type="module" src="app.js"></script>
   <script>
-    // Tab switching logic remains unchanged
+    // Tab switching logic
     document.querySelectorAll('.profile-tabs button').forEach((btn) => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.profile-tabs button').forEach(b => {
@@ -193,4 +423,3 @@
   </script>
 </body>
 </html>
-
