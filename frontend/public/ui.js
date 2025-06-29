@@ -136,9 +136,7 @@ export const ui = {
     }
   },
 
-  // New helper to create prettier cards for mixes feed
   renderMixCard: (mix) => {
-    // Example structure, add more fields and styling as needed
     return `
       <article class="mix-card card">
         <div class="mix-thumb">
