@@ -9,6 +9,9 @@ const cors = require('cors');
 
 const app = express();
 
+// TRUST PROXY for correct secure cookies behind proxy (Render)
+app.set('trust proxy', 1);
+
 // DB connection
 require('./config/db');
 
@@ -35,8 +38,8 @@ app.use(session({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24, // 1 day
     httpOnly: true,
-    secure: isProduction,          // true only on production (HTTPS)
-    sameSite: isProduction ? 'none' : 'lax',  // 'none' requires secure, so 'lax' for dev HTTP
+    secure: isProduction,          // TRUE on production, required for HTTPS
+    sameSite: isProduction ? 'none' : 'lax',  // 'none' + secure=true for cross-site cookies on prod
   }
 }));
 
