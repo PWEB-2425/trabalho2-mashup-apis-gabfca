@@ -1,4 +1,4 @@
-export const API_BASE = 'http://localhost:3000/api';
+export const API_BASE = 'https://trabalho2-mashup-apis-gabfca-backend.onrender.com/api';
 
 export const api = {
     searchTrailer: async (movieName) => {
