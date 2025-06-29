@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - VibeClip Trailer Mixer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    header {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: var(--primary);
+      margin: 0;
+      font-size: 2.2rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+
+    .media-box {
+      background: var(--bg-lighter);
+      padding: 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .media-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .media-box h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 90%;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 2px solid #444;
+      font-size: 1rem;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    button {
+      background: var(--primary);
+      border: none;
+      padding: 0.8em 1.5em;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100%;
+    }
+
+    button:hover:not(:disabled) {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .results-section {
+      grid-column: 1 / -1;
+      background: var(--bg-lighter);
+      padding: 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .mixed-player {
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-dark);
+    }
+
+    .mixed-placeholder {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .mixed-placeholder svg {
+      stroke: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .mixed-placeholder h3 {
+      margin: 10px 0 5px;
+      color: var(--text-light);
+    }
+
+    .mixed-placeholder p {
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .media-box {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="main-grid">
+    <header>
+      <h1>Trailer Mixer</h1>
+      <p class="tagline">Login or Register to start mixing!</p>
+    </header>
+
+    <section class="media-box" id="authSection">
+      <h2>Register</h2>
+      <div class="input-group">
+        <label for="regUsername" class="sr-only">Username</label>
+        <input type="text" id="regUsername" placeholder="Username" autocomplete="username" />
+      </div>
+      <div class="input-group">
+        <label for="regPassword" class="sr-only">Password</label>
+        <input type="password" id="regPassword" placeholder="Password" autocomplete="new-password" />
+      </div>
+      <button id="registerBtn" type="button">Register</button>
+    </section>
+
+    <section class="media-box">
+      <h2>Login</h2>
+      <div class="input-group">
+        <label for="loginUsername" class="sr-only">Username</label>
+        <input type="text" id="loginUsername" placeholder="Username" autocomplete="username" />
+      </div>
+      <div class="input-group">
+        <label for="loginPassword" class="sr-only">Password</label>
+        <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" />
+      </div>
+      <button id="loginBtn" type="button">Login</button>
+    </section>
+
+    <section class="results-section">
+      <div class="results-card">
+        <div class="results-header">
+          <h2>Status</h2>
+          <div id="errorMsg" class="message error hidden"></div>
+          <div id="successMsg" class="message hidden"></div>
+        </div>
+        <div class="mixed-player">
+          <div class="mixed-placeholder">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M14.752 11.168l-5.197-2.597A1 1 0 008 9.47v5.058a1 1 0 001.555.832l5.197-2.597a1 1 0 000-1.79z" />
+              </svg>
+            </div>
+            <h3>Nothing playing yet</h3>
+            <p>Login or Register to begin mixing trailers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
