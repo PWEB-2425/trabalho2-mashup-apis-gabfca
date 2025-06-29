@@ -25,10 +25,12 @@ This will install all necessary dependencies and start the backend server.
 * The frontend is a static collection of HTML, JavaScript, and CSS files located in `frontend/public`.
 * Simply serve these files with any static file server or open the `index.html` in your browser.
 
+
+* Youtube iFrame API used.
 ---
 
 ### DB
-
+* MongoDB Atlas instance
 * The DB keeps track of basic user information (id, username) 
 * It also keeps track of the generated VibeClips, associating each with the user who created them. 
 
@@ -38,6 +40,10 @@ This will install all necessary dependencies and start the backend server.
 ### Backend
 
 * All routes-session protected!
+
+* iTunes API
+* TMDB API
+  
   
 ---
 
@@ -47,7 +53,7 @@ This will install all necessary dependencies and start the backend server.
 * **express-session**
 * **Mongoose**
 * And other supporting packages for a complex backend system.
-
+* You may simply install these with `npm install`
 ---
 
 ## Features
@@ -66,5 +72,9 @@ This will install all necessary dependencies and start the backend server.
 
 --- 
 
-Enjoy creating your perfect vibe!
+## Keys for .env (place it in the root directory)
+
+MONGODB_URI
+
+TMDB_API_KEY
 
